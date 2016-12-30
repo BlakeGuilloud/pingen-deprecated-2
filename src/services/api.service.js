@@ -6,7 +6,7 @@ export async function getApiKey() {
   let newKey;
 
   try {
-    newKey = await Api.create({ key: generateKey() });
+    newKey = await Api.create({ apiKey: generateKey() });
   } catch (err) {
     return Promise.reject(err);
   }

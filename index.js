@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 
 app.use(express.static(__dirname));
 
-app.use('/pin', pinRoutes);
+app.use('/', pinRoutes);
 app.use('/api', apiRoutes);
 
 app.listen(port, () => console.log('app listening on port: ', port));

@@ -2,7 +2,7 @@ import { validateApiKey } from '../services/api.service';
 import { NotFoundError } from 'tael';
 
 export async function validateKey(req, res, next) {
-  if (await validateApiKey(req.query.api)) return next();
+  if (await validateApiKey(req.query.API)) return next();
 
   res.status(401).json({
     code: 401,
