@@ -10,13 +10,13 @@ const port = process.env.PORT || 8100;
 
 // mongoose.connect(db);
 
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.use(bodyParser.json());
-
-app.use(express.static(__dirname));
-
-app.use('/', pinRoutes);
-app.use('/api', apiRoutes);
+// app.use(bodyParser.urlencoded({ extended: true }));
+//
+// app.use(bodyParser.json());
+//
+// app.use(express.static(__dirname));
+//
+// app.use('/', pinRoutes);
+// app.use('/api', apiRoutes);
 
 app.listen(port, () => console.log('app listening on port: ', port));
