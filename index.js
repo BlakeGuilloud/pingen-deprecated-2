@@ -8,7 +8,7 @@ const apiRoutes = require('./lib/routes/api.routes');
 const db = process.env.MONGODB_URI || 'mongodb://localhost/testing';
 const port = process.env.PORT || 8100;
 
-mongoose.connect(db);
+// mongoose.connect(db);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
