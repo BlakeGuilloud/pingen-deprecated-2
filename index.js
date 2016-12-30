@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 // const pinRoutes = require('./lib/routes/pin.routes');
-// const apiRoutes = require('./lib/routes/api.routes');
+const apiRoutes = require('./lib/routes/api.routes');
 
 const db = process.env.MONGODB_URI || 'mongodb://localhost/testing';
 const port = process.env.PORT || 8100;
