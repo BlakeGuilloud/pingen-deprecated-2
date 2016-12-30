@@ -1,0 +1,6 @@
+{
+  "presets": [
+    "blake",
+    "stage-2"
+  ]
+}
