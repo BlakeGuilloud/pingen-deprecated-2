@@ -31,11 +31,11 @@ There are three routes included in the pingen service:
 
     axios.post('http://pingen.herokuapp.com/register?api=YOUR_API_KEY', payload)
       .then((data) => {
-        // data ===
-        // {
-        //   "_id": "5866be3a0942480f3b528791" // a unique pingen ID that should be stored in order to make specific requests.
-        //   "externalId": "example@email.com", // the returned external ID that was sent along with register request.
-        // }
+        data ===
+        {
+          "_id": "5866be3a0942480f3b528791" // a unique pingen ID that should be stored in order to make specific requests.
+          "externalId": "example@email.com", // the returned external ID that was sent along with register request.
+        }
       });
 
   ```
@@ -52,12 +52,12 @@ There are three routes included in the pingen service:
 
     axios.post('http://pingen.herokuapp.com/request/:id?api=YOUR_API_KEY', payload)
       .then((data) => {
-        // data ===
-        // {
-        //   "_id": "5866be3a0942480f3b528791" // a unique pingen ID that should be stored in order to make specific requests.
-        //   "externalId": "example@email.com", // the original external ID that was sent along with register request.
-        //   "pin": 123456 // the newly generated PIN for this object.
-        // }
+        data ===
+        {
+          "_id": "5866be3a0942480f3b528791" // a unique pingen ID that should be stored in order to make specific requests.
+          "externalId": "example@email.com", // the original external ID that was sent along with register request.
+          "pin": 123456 // the newly generated PIN for this object.
+        }
       });
 
   ```
@@ -73,18 +73,18 @@ There are three routes included in the pingen service:
 
     axios.post('http://pingen.herokuapp.com/verify/:id?api=YOUR_API_KEY', payload)
       .then((data) => { // If successful
-        // data ===
-        // {
-        //   "_id": "5866be3a0942480f3b528791" // a unique pingen ID that should be stored in order to make specific requests.
-        //   "externalId": "example@email.com", // the original external ID that was sent along with register request.
-        //   "pin": 123456 // the newly generated PIN for this object.
+        data ===
+        {
+          "_id": "5866be3a0942480f3b528791" // a unique pingen ID that should be stored in order to make specific requests.
+          "externalId": "example@email.com", // the original external ID that was sent along with register request.
+          "pin": 123456 // the newly generated PIN for this object.
         // }
       })
       .catch((err) => { // If unsuccessful
-        // err === {
-        //  "code": 400,
-        //  "message": "The PIN you entered is incorrect and/on the verify time has expired."
-        // }
+        err === {
+          "code": 400,
+          "message": "The PIN you entered is incorrect and/on the verify time has expired."
+        }
       });
 
   ```
