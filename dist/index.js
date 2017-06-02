@@ -12,9 +12,9 @@ var _express = require('express');
 
 var _express2 = _interopRequireDefault(_express);
 
-var _Account = require('./routers/Account.router');
+var _v = require('./routers/v1.router');
 
-var _Account2 = _interopRequireDefault(_Account);
+var _v2 = _interopRequireDefault(_v);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -33,7 +33,7 @@ app.use(_bodyParser2.default.urlencoded({ extended: true }));
 
 app.use(_bodyParser2.default.json());
 
-app.use('/accounts', _Account2.default);
+app.use('/api/v1', _v2.default);
 
 app.listen(port, function () {
   return console.log('app listening on port: ', port);
