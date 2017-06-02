@@ -1,27 +1,9 @@
 {
   "name": "pin-gen",
   "version": "1.0.0",
-  "description": "PIN Generator",
-  "main": "index.js",
-  "scripts": {
-    "build": "rm -Rf lib && babel src -d lib --copy-files",
-    "dev": "npm run build && node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
-  },
+  "description": "2FA",
+  "scripts": {},
   "author": "Blake Guilloud",
   "license": "ISC",
-  "dependencies": {
-    "babel-cli": "^6.18.0",
-    "babel-plugin-transform-runtime": "^6.15.0",
-    "babel-preset-es2015": "^6.18.0",
-    "babel-preset-stage-2": "^6.18.0",
-    "babel-runtime": "^6.20.0",
-    "body-parser": "^1.15.2",
-    "express": "^4.14.0",
-    "fluyt": "^1.0.1",
-    "jquery": "^3.1.1",
-    "mongoose": "^4.7.5",
-    "tael": "^1.0.2"
-  }
+  "dependencies": {}
 }
