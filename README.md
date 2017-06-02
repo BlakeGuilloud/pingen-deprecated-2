@@ -1,87 +1,60 @@
-# pingen
+## pingen.io
 
-## Getting started
+### Project Scope:
+pingen is a two-factor authentication service.
 
-For all demo requests, we will be using the [axios](https://www.npmjs.com/package/axios) library.
+### Accounts
+```
+{
+  id: 1,
+  name: 'Prestige Worldwide',
+  account_token: '5FE1!JNA3401',
+  owner: 450 #userId,e
+  members: [123, 4], #userIds,
+  email: 16, #emailId
+  phone: 1, #phoneId
+}
+```
+#### Create:
+A user should be able to create an account, and will become the account owner.
 
-#### API Key
+A user should be granted an account_token that will be required on all subsequent requests.
 
-In order to consume the pingen API, a valid API key is required.
+#### Update:
+User's should be able to update all account preferences based on permissions.
 
-API keys are free and only required a GET request to `http://pingen.herokuapp.com/api`.
+A user should be able to reset their account_token.
 
-The request will return a JSON object that includes an apiKey.
+#### Delete:
+An owner should be able to delete an account.
 
-#### Service
+All phones, emails, and users will be disassociated with the account.
 
-Every request made to the pingen service should include a query string that includes your valid API key:
+#### Features:
+Owners are the only ones with full Account CRUD access by default and may give permissions to all or no members.
 
-`axios.get('http://pingen.herokuapp.com/fooRoute/?api=YOUR_API_KEY')`
+Members have Read access only unless otherwise selected.
 
-#### Routes
+An owner may invite a registered user to join their account.
 
-There are three routes included in the pingen service:
+An owner may remove any and all users from their account.
 
-1. `/register` - POST
-  - Returns newly registered user
+An owner may provision a phone number for outbound PINs.
 
-  Example request:
-  ```
-    const payload = { externalId: example@email.com }; // The register payload expects an externalId that can represent data with type String.
+An owner may provision an email address for outbound PINs.
 
-    axios.post('http://pingen.herokuapp.com/register?api=YOUR_API_KEY', payload)
-      .then((response) => {
-        response === {
-          "_id": "5866be3a0942480f3b528791" // a unique pingen ID that should be stored in order to make specific requests.
-          "externalId": "example@email.com", // the returned external ID that was sent along with register request.
-        }
-      });
+### Users
+```
+{
+  id: 450,
+  name: 'Johnny Hopkins',
+  accounts: [1, 3], #accountIds
+  email: 3, #emailId
+  password: iLuvBacon,
+}
+```
+#### Create:
+A person should be able to create a user with a name, email, and password.
 
-  ```
-
-2. `/request/:id` - POST
-  - Returns a generated PIN.
-
-  Example request:
-  ```
-    const payload = {
-      timeout: 15000, // Number - in milliseconds, the amount of time your PIN will exist before expiration. Defaults to 30000 (30 seconds).
-      pinLength: 10 // Number - the exponential value of a PIN's length. Defaults to 1000000 (6 digits).
-    };
-
-    axios.post('http://pingen.herokuapp.com/request/:id?api=YOUR_API_KEY', payload)
-      .then((response) => {
-        response === {
-          "_id": "5866be3a0942480f3b528791" // a unique pingen ID that should be stored in order to make specific requests.
-          "externalId": "example@email.com", // the original external ID that was sent along with register request.
-          "pin": 123456 // the newly generated PIN for this object.
-        }
-      });
-
-  ```
-
-3. `/verify/:id` - POST
-  - Returns user if PIN is correct and it has not expired
-
-  Example request:
-  ```
-    const payload = {
-      pin: 123456, // Number - The generated PIN that was returned from the /request route.
-    };
-
-    axios.post('http://pingen.herokuapp.com/verify/:id?api=YOUR_API_KEY', payload)
-      .then((response) => { // If successful
-        response === {
-          "_id": "5866be3a0942480f3b528791" // a unique pingen ID that should be stored in order to make specific requests.
-          "externalId": "example@email.com", // the original external ID that was sent along with register request.
-          "pin": 123456 // the newly generated PIN for this object.
-        }
-      })
-      .catch((err) => { // If unsuccessful
-        err === {
-          "code": 400,
-          "message": "The PIN you entered is incorrect and/on the verify time has expired."
-        }
-      });
-
-  ```
+#### Update:
+A user should be able to edit all fields of their object.
